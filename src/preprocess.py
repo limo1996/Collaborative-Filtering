@@ -52,16 +52,16 @@ mean = np.nanmean(train_data, axis=1, keepdims=True)
 train_data = train_data - mean
 
 # fill in missing values with appropriate average
-mean = np.nanmean(train_data, axis=1, keepdims=True)
+new_mean = np.nanmean(train_data, axis=1, keepdims=True)
 inds = np.where(np.isnan(train_data))
-train_data[inds] = np.take(mean, inds[0])
+train_data[inds] = np.take(new_mean, inds[0])
 print(train_data)
 
 # test that data are centered
-mean = np.nanmean(train_data, axis=1)
-assert all(m < 0.01 and m > -0.01 for m in mean)
+new_mean = np.nanmean(train_data, axis=1)
+assert all(m < 0.01 and m > -0.01 for m in new_mean)
 
 # save matrix into pickle file for further usage
 with open("../data/data.pickle", "wb") as f:
-    save = { 'train_data' : train_data, 'valid_data' : valid_data }
+    save = { 'train_data' : train_data, 'valid_data' : valid_data, 'mean' : mean }
     pickle.dump(save, f, pickle.HIGHEST_PROTOCOL)
