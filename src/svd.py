@@ -1,4 +1,5 @@
 import os
+import re
 import math
 import numpy as np
 import matplotlib
@@ -46,7 +47,27 @@ def reconstruct(U, S, Vt, k, t_shape):
 
     return U[:,0:k].dot(S_[0:k,0:k].dot(Vt[0:k,:]))
 
-# try all k's around "knee"
-for k in range(2, 15):
-    predicted = reconstruct(U, S, Vt, k, train_data.shape) + mean
-    performance(predicted, 'SVD baseline k = {0}'.format(k))  
+# try all k = 7 seems to be the best
+k = 7
+# reconstruct matrix
+predicted = reconstruct(U, S, Vt, k, train_data.shape) + mean
+# evaluate offline performance
+performance(predicted, 'SVD baseline k = {0}'.format(k))  
+
+def parse(line):
+    """ parses line and returns parsed row, column and value """
+    m = re.search('r(.+?)_c(.+?),(.+?)', line.decode('utf-8'))
+    row = int(m.group(1))
+    column = int(m.group(2))
+    value = int(m.group(3))
+    return row, column, value
+
+with open('../data/svd.csv', 'w+') as f:
+    f.write('Id,Prediction\n')
+    with open('../data/sampleSubmission.csv', 'rb') as f2:
+        content = f2.readlines()
+        content = content[1:]
+        for line in content:
+            if line:
+                row, column, value = parse(line)
+                f.write('r{0}_c{1},{2}\n'.format(row, column, predicted[row-1,column-1]))
