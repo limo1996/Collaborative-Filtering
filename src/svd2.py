@@ -16,6 +16,9 @@ from surprise import SlopeOne
 from surprise import Dataset
 from surprise import Reader
 
+from surprise.model_selection import KFold
+from surprise.model_selection import cross_validate
+
 def parse(line):
     """ parses line and returns parsed row, column and value """
     m = re.search('r(.+?)_c(.+?),(.+?)', line.decode('utf-8'))
@@ -51,7 +54,7 @@ data = Dataset.load_from_df(df[['userID', 'itemID', 'rating']], reader=reader)
 # Retrieve the trainset.
 trainset = data.build_full_trainset()
 
-algo = SVDpp()
+algo = SVD(n_factors=200, n_epochs=50, biased=False)
 algo.fit(trainset)
 
 with open('../data/svd2.csv', 'w+') as f:
@@ -66,3 +69,8 @@ with open('../data/svd2.csv', 'w+') as f:
                 iid = column
                 pred = algo.predict(uid, iid, verbose=False)
                 f.write('r{0}_c{1},{2}\n'.format(row, column, pred.est))
+
+kf = KFold(random_state=0)
+out = cross_validate(algo, data, ['rmse', 'mae'], kf)
+
+print("RMSE: {0}, MAE: {1}".format(np.mean(out['test_rmse']), np.mean(out['test_mae'])))
