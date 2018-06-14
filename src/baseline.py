@@ -1,74 +1,27 @@
-import os
-import re
-import math
 import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-
-from six.moves import cPickle as pickle
-from performance import performance
-
-from tabulate import tabulate
-import pandas as pd
 from surprise import BaselineOnly
-from surprise import Dataset
-from surprise import Reader
 
 from surprise.model_selection import KFold
 from surprise.model_selection import cross_validate
 
-def parse(line):
-    """ parses line and returns parsed row, column and value """
-    m = re.search('r(.+?)_c(.+?),(.+?)', line.decode('utf-8'))
-    row = int(m.group(1))
-    column = int(m.group(2))
-    value = int(m.group(3))
-    return row, column, value
+from utils import makePredictions, loadDataForSurprise
 
-itemID = []
-userID = []
-rating = []
+# load the train data in surprise format
+data = loadDataForSurprise()
 
-with open('../data/data_train.csv', 'rb') as f:
-    content = f.readlines()
-    content = content[1:]
-    for line in content:
-        if line:
-            row, column, value = parse(line)
-            itemID.append(column)
-            userID.append(row)
-            rating.append(value)
-
-# Creation of the dataframe. Column names are irrelevant.
-ratings_dict = {'itemID': itemID,
-                'userID': userID,
-                'rating': rating}
-df = pd.DataFrame(ratings_dict)
-
-# The columns must correspond to user id, item id and ratings (in that order).
-reader = Reader(rating_scale=(1, 5))
-data = Dataset.load_from_df(df[['userID', 'itemID', 'rating']], reader=reader)
-
-# Retrieve the trainset.
+# retrieve the trainset.
 trainset = data.build_full_trainset()
 
+# create Baseline algorithm and train it
 algo = BaselineOnly(verbose=False)
 algo.fit(trainset)
 
-with open('../data/baseline.csv', 'w+') as f:
-    f.write('Id,Prediction\n')
-    with open('../data/sampleSubmission.csv', 'rb') as f2:
-        content = f2.readlines()
-        content = content[1:]
-        for line in content:
-            if line:
-                row, column, value = parse(line)
-                uid = row
-                iid = column
-                pred = algo.predict(uid, iid, verbose=False)
-                f.write('r{0}_c{1},{2}\n'.format(row, column, pred.est))
+# save the predictions
+makePredictions(algo, '../data/baseline.csv')
 
+# validate it
 kf = KFold(random_state=0)
 out = cross_validate(algo, data, ['rmse', 'mae'], kf)
 
+# print errors
 print("RMSE: {0}, MAE: {1}".format(np.mean(out['test_rmse']), np.mean(out['test_mae'])))
