@@ -17,26 +17,26 @@ def parse(line):
 
 def parsef(line):
     """ parses line and returns parsed row, column and value """
-    m = re.search('r(.+?)_c(.+?),(.+?)', line.decode('utf-8'))
-    row = int(m.group(1))
-    column = int(m.group(2))
-    print(m.group(3))
-    value = float(m.group(3))
+    l1 = line.decode('utf-8').split(',')
+    l2 = l1[0].split('_')
+    row = int(l2[0][1:])
+    column = int(l2[1][1:])
+    value = float(l1[1])
     return row, column, value
 
-def loadRawData():
+def loadRawData(file='../data/data_train.csv'):
     """ Loads and returns data in surprise format """
     itemID = []
     userID = []
     rating = []
 
     # parse data file into three arrays
-    with open('../data/data_train.csv', 'rb') as f:
+    with open(file, 'rb') as f:
         content = f.readlines()
         content = content[1:]
         for line in content:
             if line:
-                row, column, value = parse(line)
+                row, column, value = parsef(line)
                 itemID.append(column)
                 userID.append(row)
                 rating.append(value)
