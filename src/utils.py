@@ -15,7 +15,16 @@ def parse(line):
     value = int(m.group(3))
     return row, column, value
 
-def loadDataForSurprise():
+def parsef(line):
+    """ parses line and returns parsed row, column and value """
+    m = re.search('r(.+?)_c(.+?),(.+?)', line.decode('utf-8'))
+    row = int(m.group(1))
+    column = int(m.group(2))
+    print(m.group(3))
+    value = float(m.group(3))
+    return row, column, value
+
+def loadRawData():
     """ Loads and returns data in surprise format """
     itemID = []
     userID = []
@@ -31,6 +40,11 @@ def loadDataForSurprise():
                 itemID.append(column)
                 userID.append(row)
                 rating.append(value)
+    return itemID, userID, rating
+
+def loadDataForSurprise():
+    """ Loads and returns data in surprise format """
+    itemID, userID, rating = loadRawData()
 
     # Creation of the dataframe. Column names are irrelevant.
     ratings_dict = {'itemID': itemID,
@@ -44,7 +58,7 @@ def loadDataForSurprise():
     return data
 
 
-def makePredictions(algo, file):
+def makePredictions(algo, file, est=True):
     """ Makes predictions file according to sampleSubmission file from algorithm provided """
     with open(file, 'w+') as f:
         f.write('Id,Prediction\n')
@@ -56,5 +70,23 @@ def makePredictions(algo, file):
                     row, column, value = parse(line)
                     uid = row
                     iid = column
+                    if not est:
+                        uid = uid - 1
+                        iid = iid - 1
                     pred = algo.predict(uid, iid, verbose=False)
-                    f.write('r{0}_c{1},{2}\n'.format(row, column, pred.est))
+                    if est:
+                        pred = pred.est
+                    f.write('r{0}_c{1},{2}\n'.format(row, column, pred))
+
+def buildMatrix(data):
+    """ Builds (usually) sparse matrix from list of tuples data """
+    matrix = np.ndarray((10000,1000))
+    matrix.fill(float('nan'))
+    for u,i,v in data:
+        matrix[u-1,i-1] = v
+
+    # normalize data in each row -> normalize user's ratings
+    mean = np.nanmean(matrix, axis=1, keepdims=True)
+    inds = np.where(np.isnan(matrix))
+    matrix[inds] = np.take(mean, inds[0])
+    return matrix
