@@ -126,7 +126,7 @@ class SGD(AlgoBase):
 
 sgd = SGD('../data/SGD6.pickle', 0.08, 0.04, 17, 60000000, 2.8, False)
 sgd.train()
-sgd.predictions('../data/SGD6.csv')
+sgd.generatePredictions('../data/SGD6.csv')
 
 #1 k=12, reg=0.083, reg2=0.04, lr=3.0 ===> 0.9269
 #2 k=12, reg=0.08, reg2=0.04, lr=3.0 ===> 0.9240

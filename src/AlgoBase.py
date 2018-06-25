@@ -25,7 +25,7 @@ class AlgoBase(object):
         self.global_mean = np.mean(data[2])
         self.data = list(zip(data[1], data[0], data[2]))
     
-    def predictions(self, file):
+    def generatePredictions(self, file):
         """ 
         Makes predictions according to the sampleSubmissions.csv file.
         """
