@@ -3,7 +3,7 @@ import itertools
 import numpy as np
 import matplotlib.pyplot as plt 
 
-FILE = '../../data/Output.txt'
+FILE = '../../data/Output4.txt'
 
 with open(FILE, 'rb') as f:
     content = f.readlines()
@@ -106,6 +106,14 @@ def plotk(rc):
     line1 = plt.plot(ks, trains, 'c')
     line2 = plt.plot(ks, tests, 'm')
     plt.legend(['Test RMSE', 'Train RMSE'])
+    plt.grid(True, axis='y')
+    ys = np.arange(round(np.min(trains), 2) - 0.01, round(np.max(tests), 2) + 0.01, 0.01)
+    print(ys)
+    plt.yticks(ys)
+    plt.gca().spines['top'].set_visible(False)
+    plt.gca().spines['right'].set_visible(False)
+    plt.gca().spines['bottom'].set_visible(False)
+    plt.gca().spines['left'].set_visible(False)
     plt.show()
 
 def stats(rc):
@@ -119,4 +127,4 @@ def stats(rc):
 
 stats(relevant_content)
 #plot4(relevant_content)
-#plotk(relevant_content)
+plotk(relevant_content)
