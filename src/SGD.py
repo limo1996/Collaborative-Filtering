@@ -29,8 +29,8 @@ class SGD(AlgoBase):
         AlgoBase.__init__(self)
 
     def train(self):
-        split_ratio = 0.8 if not self.submission else 1
-        self.split_data(0.8)
+        split_ratio = 0.90 if not self.submission else 1
+        self.split_data(split_ratio)
         predictions = self.sgd(True)
         predictions[predictions > 5.0] = 5.0
         predictions[predictions < 1.0] = 1.0
@@ -70,7 +70,7 @@ class SGD(AlgoBase):
                 
             if verbose:
                 print("SGD solving started. Params: k={}, reg={}, reg2={}, lr={}".format(self.k, self.reg, self.reg2, self.lrf))
-                print("SGD: There are {} predictions given.".format(len(self.train_data[0])))
+                print("SGD: There are {} predictions given.".format(len(self.train_data)))
                 print("SGD: global mean is {}".format(global_mean))
                 
             lr = self.sgd_learning_rate(0)
@@ -123,13 +123,28 @@ class SGD(AlgoBase):
         rates = [0.035, 0.032, 0.029, 0.027, 0.012, 0.01, 0.0022, 0.002, 0.00055, 0.0005, 0.0001, 0.00002]
         progress = round((s / self.it) * 12)
         return rates[progress] * self.lrf
-
-sgd = SGD('../data/SGD6.pickle', 0.08, 0.04, 17, 60000000, 2.8, False)
+"""
+sgd = SGD('../data/SGD13.pickle', 0.08, 0.04, 10, 60000000, 2.9, True)
 sgd.train()
-sgd.generatePredictions('../data/SGD6.csv')
+sgd.generatePredictions('../data/SGD13.csv')
+"""
+
+regs = [0.08]#[0.07, 0.075, 0.08, 0.085]
+regs2 = [0.04]#[0.03, 0.035, 0.04, 0.045]
+ks = [13, 17, 15, 14]#[10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26] #[11, 12, 13, 14, 15, 16]
+lrs = [2.9]#[2.7, 2.8, 2.9, 3, 3.1, 3.2]
+
+for r1 in regs:
+    for r2 in regs2:
+        for k in ks:
+            for lr in lrs:
+                sgd = SGD('../data/SGD{0}_{1}_{2}_{3}.pickle'.format(r1, r2, k, lr), r1, r2, k, 60000000, lr, True)
+                sgd.train()
+                sgd.generatePredictions('../data/var_k/SGD{0}_{1}_{2}_{3}.csv'.format(r1, r2, k, lr))
+
 
 #1 k=12, reg=0.083, reg2=0.04, lr=3.0 ===> 0.9269
 #2 k=12, reg=0.08, reg2=0.04, lr=3.0 ===> 0.9240
 #3 k=15, reg=0.08, reg2=0.04, lr=3.0 ===> 0.9157
 #4 k=16, reg=0.08, reg2=0.04, lr=3.2 ===> 0.9132
-#5 k=17, reg=0.08, reg2=0.04, lr=3.2 ===>0.9109
+#5 k=17, reg=0.08, reg2=0.04, lr=3.2 ===> 0.9109
