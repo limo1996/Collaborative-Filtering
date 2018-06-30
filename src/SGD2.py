@@ -2,10 +2,14 @@ import numpy as np
 from SGD import SGD
 
 class SGD_SVD(SGD):
+    """
+        Not really working approach that runs SVD after SGD. Makes almost no improvement... 
+    """
     def __init__(self, out_path, reg, reg2, k, it, lr, submission):
         SGD.__init__(self, out_path, reg, reg2, k, it, lr, submission)
 
     def run_svd(self, kk):
+        """ Runs SVD on predictions matrix """
         self.kk = kk
         self.validate('Before SVD')
         # do SVD on them
@@ -16,6 +20,7 @@ class SGD_SVD(SGD):
         self.validate('After SVD')
 
     def validate(self, msg):
+        """ Prints current test and train RMSEs"""
         print(msg)
         score = self.RMSE(self.train_data, self.predictions)
         test_score = self.RMSE(self.test_data, self.predictions) if self.test_data is not None else -1
