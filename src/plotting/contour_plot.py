@@ -3,7 +3,7 @@ import itertools
 import numpy as np
 import matplotlib.pyplot as plt 
 
-FILE = '../../data/Output4.txt'
+FILE = '../../data/Output.txt'
 
 with open(FILE, 'rb') as f:
     content = f.readlines()
@@ -93,6 +93,21 @@ def plot4(rc):
     plt.xlabel(r'$(\Lambda_1,\Lambda_2)$')
     plt.show()
 
+def plotk(rc):
+    _, reg, reg2, lr, _, _ = parse_lines(rc, 0)
+    ks, trains, tests = [], [], []
+    for i in range(0, len(rc), 2):
+        k, _, _, _, test_fit, train_fit, = parse_lines(rc, i)
+        ks.append(k)
+        trains.append(train_fit)
+        tests.append(test_fit)
+
+    ks, trains, tests = zip(*sorted(zip(ks, trains, tests), key=lambda x: x[0]))
+    line1 = plt.plot(ks, trains, 'c')
+    line2 = plt.plot(ks, tests, 'm')
+    plt.legend(['Test RMSE', 'Train RMSE'])
+    plt.show()
+
 def stats(rc):
     stat = []
     for i in range(0,len(rc),2):
@@ -104,3 +119,4 @@ def stats(rc):
 
 stats(relevant_content)
 #plot4(relevant_content)
+#plotk(relevant_content)

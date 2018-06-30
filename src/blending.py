@@ -1,3 +1,4 @@
+import os
 import numpy as np 
 from utils import loadRawData
 from sklearn import datasets, linear_model
@@ -13,6 +14,7 @@ def blend_files(files, weights, out_file):
     items, users, ratings = loadRawData(file=files[0])
     ratings = weights[0] * np.array(ratings)
     for f,w in zip(files[1:], weights[1:]):
+        print(f,w)
         _, _, r = loadRawData(file=f)
         ratings = ratings + w * np.array(r)
     ratings = ratings / sw
@@ -117,3 +119,6 @@ def shift3(files, rmses, out_file, target_rmse):
 #    [1, 1, 1, 1, 1, 1], '../data/SGD2_8_11_12_spec.csv') # ===> 0.97761
 #blend_files(['../data/SGD2.csv', '../data/SGD4.csv', '../data/SGD8.csv', '../data/SGD11.csv', '../data/SGD12.csv', '../data/SGD13.csv'], 
 #    [1, 1, 1, 1, 1, 1], '../data/SGD2_4_8_11_12_13.csv') # ===> 0.97739
+files = ['../data/var_k/{0}'.format(f) for f in os.listdir('../data/var_k')]
+#blend_files(files, np.ones(len(files)), '../data/SGD_spec.csv') # ===> 0.97723
+blend_files(files, np.ones(len(files)), '../data/SGD_spec2.csv') # ===> 0.97723 # without SGD0.08_0.04_14_2.9.csv
