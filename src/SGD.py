@@ -9,13 +9,14 @@ class SGD(AlgoBase):
     Collaborative filtering algorithm for prediction of user item preferences.
 
     Parameters:
-        out_path: Path for saving U, V computed matrices.
-        reg : regularizer for the U and V matrices
-        reg2 : regularizer for biasU and biasV matrices
-        k : the number of features to use
-        it: number of iterations 
-        lr: learning rate factor
-        submission: if true than all data are train data otherwise 80%
+        out_path:   Path for saving U, V computed matrices.
+        reg :       regularizer for the U and V matrices
+        reg2 :      regularizer for biasU and biasV matrices
+        k :         the number of features to use
+        it:         number of iterations 
+        lr:         learning rate factor
+        submission: if true than all data are train data otherwise 90%
+
     """
 
     def __init__(self, out_path, reg, reg2, k, it, lr, submission):
@@ -93,12 +94,14 @@ class SGD(AlgoBase):
 
                 guess = U_d.dot(V_n) + biasU_d + biasV_n
             
+                # error
                 delta = v - guess
 
                 try:
+                    # update U and V matrices
                     new_U_d = U_d + lr * (delta * V_n - reg*U_d)
                     new_V_n = V_n + lr * (delta * U_d - reg*V_n)
-
+                    # update biases
                     new_biasU_d = biasU_d + lr * ( delta - reg2*(biasU_d + biasV_n - global_mean))
                     new_biasV_n = biasV_n + lr * ( delta - reg2*(biasV_n + biasU_d - global_mean))
                     
@@ -123,16 +126,25 @@ class SGD(AlgoBase):
         rates = [0.035, 0.032, 0.029, 0.027, 0.012, 0.01, 0.0022, 0.002, 0.00055, 0.0005, 0.0001, 0.00002]
         progress = round((s / self.it) * 12)
         return rates[progress] * self.lrf
+
+
 """
 sgd = SGD('../data/SGD13.pickle', 0.08, 0.04, 10, 60000000, 2.9, True)
 sgd.train()
 sgd.generatePredictions('../data/SGD13.csv')
 """
 
-regs = [0.08]#[0.07, 0.075, 0.08, 0.085]
-regs2 = [0.04]#[0.03, 0.035, 0.04, 0.045]
-ks = [13, 17, 15, 14]#[10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26] #[11, 12, 13, 14, 15, 16]
-lrs = [2.9]#[2.7, 2.8, 2.9, 3, 3.1, 3.2]
+"""                  *** WARNING: Takes around 90 hours to run on Intel Core i5 Macbook Pro ***
+    Grid search:
+        - method to search for optimal parameters
+        - runs all combinations of parameters below
+        - outputs results into console
+        - script in plotting/plots.py can parse output and plot nice figures :)
+"""
+regs = [0.07, 0.075, 0.08, 0.085]
+regs2 = [0.03, 0.035, 0.04, 0.045]
+ks = [11, 12, 13, 14, 15, 16]
+lrs = [2.8, 2.9, 3, 3.1, 3.2]
 
 for r1 in regs:
     for r2 in regs2:
@@ -140,7 +152,7 @@ for r1 in regs:
             for lr in lrs:
                 sgd = SGD('../data/SGD{0}_{1}_{2}_{3}.pickle'.format(r1, r2, k, lr), r1, r2, k, 60000000, lr, True)
                 sgd.train()
-                sgd.generatePredictions('../data/var_k/SGD{0}_{1}_{2}_{3}.csv'.format(r1, r2, k, lr))
+                sgd.generatePredictions('../data/SGD{0}_{1}_{2}_{3}.csv'.format(r1, r2, k, lr))
 
 
 #1 k=12, reg=0.083, reg2=0.04, lr=3.0 ===> 0.9269
