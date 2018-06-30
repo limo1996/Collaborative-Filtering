@@ -1,0 +1,7 @@
+.DS_Store
+src/__pycache__/
+*.pickle
+.vscode/
+*.pyc
+*.icloud
+*.csv
