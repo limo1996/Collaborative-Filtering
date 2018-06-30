@@ -3,7 +3,8 @@ import itertools
 import numpy as np
 import matplotlib.pyplot as plt 
 
-FILE = '../../data/Output4.txt'
+# file to load content for
+FILE = '../../data/Output3.txt'
 
 with open(FILE, 'rb') as f:
     content = f.readlines()
@@ -16,6 +17,10 @@ for line in content:
         relevant_content.append(line)
 
 def parse_lines(c, i):
+    """ 
+        Parses two consecutive relevant lines and returns parsed tuple of (k, reg, reg2, lr, test_fit, fit)  
+    """
+
     m = re.search('SGD solving started. Params: k=(.+?), reg=(.+?), reg2=(.+?), lr=(.+?)\n', c[i])
     k = int(m.group(1))
     reg = float(m.group(2))
@@ -27,9 +32,9 @@ def parse_lines(c, i):
     return k, reg, reg2, lr, test_fit, fit
 
 def plot2(rc):
-    results = {}
-    ks = []
-    lrs = []
+    """ Plots meshgrid plot of ks and lrs with fixed reg and reg2 """
+
+    results, ks, lrs = {}, [], []
     for i in range(0,len(rc),2):
         k, _, _, lr, test_fit, _ = parse_lines(rc, i)
         results[(k,lr)] = test_fit
@@ -44,6 +49,7 @@ def plot2(rc):
 
     plt.pcolormesh(x, y, c, cmap='RdBu')
     plt.colorbar()
+    plt.savefig('meshgrid2.pdf', format='pdf')
     plt.show()
 
 # returns sorted set
@@ -51,11 +57,8 @@ def sortedSet(x):
     return list(sorted(set(x)))
 
 def plot4(rc):
-    results = {}
-    ks = []
-    regs = []
-    regs2 = []
-    lrs = []
+    """ Prints meshgrid plot from grid search of 4 parameters = k, reg, reg2, lr """
+    results, ks, regs, regs2, lrs = {}, [], [], [], []
     for i in range(0,len(rc),2):
         k, reg, reg2, lr, test_fit, _ = parse_lines(rc, i)
         ks.append(k)
@@ -64,7 +67,7 @@ def plot4(rc):
         lrs.append(lr)
         results[(k,reg,reg2,lr)] = test_fit
     ks, regs, regs2, lrs = sortedSet(ks), sortedSet(regs), sortedSet(regs2), sortedSet(lrs)
-    print(ks, regs, regs2, lrs)
+    #print(ks, regs, regs2, lrs)
     x_len = len(ks) * len(lrs)
     y_len = len(regs) * len(regs2)
     C = np.ndarray((x_len, y_len))
@@ -81,19 +84,21 @@ def plot4(rc):
     plt.colorbar()
     xt = ['({0},{1})'.format(x,y) for x, y in itertools.product(regs, regs2)]
     yt = ['({0},{1})'.format(x,y) for x, y in itertools.product(ks, lrs)]
-    print(xt, yt)
+    #print(xt, yt)
     locs = np.arange(0, y_len) + 0.5
     plt.xticks(locs, xt)
     locs = np.arange(0, x_len) + 0.5
-    print(locs)
+    #print(locs)
     plt.tick_params(axis='both', which='major', labelsize=8)
     plt.tick_params(axis='both', which='minor', labelsize=6)
     plt.yticks(locs, yt)
     plt.ylabel(r'$(k,\delta)$')
     plt.xlabel(r'$(\Lambda_1,\Lambda_2)$')
+    plt.savefig('meshgrid4.pdf', format='pdf')
     plt.show()
 
 def plotk(rc):
+    """ Prints plot of k with all other parameters fixed """
     _, reg, reg2, lr, _, _ = parse_lines(rc, 0)
     ks, trains, tests = [], [], []
     for i in range(0, len(rc), 2):
@@ -105,7 +110,7 @@ def plotk(rc):
     ks, trains, tests = zip(*sorted(zip(ks, trains, tests), key=lambda x: x[0]))
     line1 = plt.plot(ks, trains, 'c')
     line2 = plt.plot(ks, tests, 'm')
-    plt.legend(['Test RMSE', 'Train RMSE'])
+    plt.legend(['Train RMSE', 'Test RMSE'])
     plt.grid(True, axis='y')
     ys = np.arange(round(np.min(trains), 2) - 0.01, round(np.max(tests), 2) + 0.01, 0.01)
     print(ys)
@@ -114,9 +119,40 @@ def plotk(rc):
     plt.gca().spines['right'].set_visible(False)
     plt.gca().spines['bottom'].set_visible(False)
     plt.gca().spines['left'].set_visible(False)
+    plt.xlabel('k')
+    plt.ylabel('RMSE')
+    plt.savefig('plotk.pdf', format='pdf')
+    plt.show()
+
+def plot_lr(rc):
+    """ Prints plot of lr with all other parameters fixed """
+    k, reg, reg2, _, _, _ = parse_lines(rc, 0)
+    lrs, trains, tests = [], [], []
+    for i in range(0, len(rc), 2):
+        _, _, _, lr, test_fit, train_fit, = parse_lines(rc, i)
+        lrs.append(lr)
+        trains.append(train_fit)
+        tests.append(test_fit)
+
+    lrs, trains, tests = zip(*sorted(zip(lrs, trains, tests), key=lambda x: x[0]))
+    line1 = plt.plot(lrs, trains, 'y')
+    line2 = plt.plot(lrs, tests, 'k')
+    plt.legend(['Train RMSE', 'Test RMSE'])
+    plt.grid(True, axis='y')
+    ys = np.arange(round(np.min(trains), 2) - 0.01, round(np.max(tests), 2) + 0.01, 0.01)
+    print(ys)
+    plt.yticks(ys)
+    plt.gca().spines['top'].set_visible(False)
+    plt.gca().spines['right'].set_visible(False)
+    plt.gca().spines['bottom'].set_visible(False)
+    plt.gca().spines['left'].set_visible(False)
+    plt.xlabel(r'$\delta$')
+    plt.ylabel('RMSE')
+    plt.savefig('plot_lr.pdf', format='pdf')
     plt.show()
 
 def stats(rc):
+    """ Prints all collected results sorted from best test fit to the worst. """
     stat = []
     for i in range(0,len(rc),2):
         k, reg, reg2, lr, test_fit, fit = parse_lines(rc, i)
@@ -127,4 +163,7 @@ def stats(rc):
 
 stats(relevant_content)
 #plot4(relevant_content)
-plotk(relevant_content)
+#plotk(relevant_content)
+#plot_lr(relevant_content)
+#plot4(relevant_content)
+plot2(relevant_content)
