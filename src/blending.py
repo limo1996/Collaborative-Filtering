@@ -121,4 +121,4 @@ def shift3(files, rmses, out_file, target_rmse):
 #    [1, 1, 1, 1, 1, 1], '../data/SGD2_4_8_11_12_13.csv') # ===> 0.97739
 files = ['../data/var_k/{0}'.format(f) for f in os.listdir('../data/var_k')]
 #blend_files(files, np.ones(len(files)), '../data/SGD_spec.csv') # ===> 0.97723
-blend_files(files, np.ones(len(files)), '../data/SGD_spec2.csv') # ===> 0.97723 # without SGD0.08_0.04_14_2.9.csv
+blend_files(files, np.ones(len(files)), '../data/SGD_spec3.csv') # ===> 0.97718 #all final files
