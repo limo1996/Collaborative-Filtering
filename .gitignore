@@ -2,6 +2,6 @@
 src/__pycache__/
 *.pickle
 .vscode/
-src/utils.pyc
+*.pyc
 *.icloud
 *.csv
