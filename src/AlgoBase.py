@@ -41,7 +41,7 @@ class AlgoBase(object):
         items = round(len(self.data) * ratio)
         random.shuffle(self.data)
         self.train_data = self.data[:items]
-        self.test_data = self.data[items:]
+        self.test_data = None if ratio == 1 else self.data[items:]
 
     def RMSE(self, test_data, predictions):
         """
