@@ -1,0 +1,150 @@
+SGD solving started. Params: k=12, reg=0.08, reg2=0.01, lr=2.9
+SGD: There are 1059257 predictions given.
+SGD: global mean is 3.8572805008190647
+SGD: step        1  ( 0% done). fit = 4.0091, test_fit=4.0093, learning_rate=0.10150
+SGD: step  5000001  ( 8% done). fit = 1.0097, test_fit=1.0397, learning_rate=0.09280
+SGD: step 10000001  (16% done). fit = 0.9940, test_fit=1.0350, learning_rate=0.08410
+SGD: step 15000001  (25% done). fit = 0.9867, test_fit=1.0297, learning_rate=0.07830
+SGD: step 20000001  (33% done). fit = 0.9826, test_fit=1.0275, learning_rate=0.03480
+SGD: step 25000001  (41% done). fit = 0.9440, test_fit=0.9986, learning_rate=0.02900
+SGD: step 30000001  (50% done). fit = 0.9375, test_fit=0.9935, learning_rate=0.00638
+SGD: step 35000001  (58% done). fit = 0.9219, test_fit=0.9809, learning_rate=0.00580
+SGD: step 40000001  (66% done). fit = 0.9209, test_fit=0.9807, learning_rate=0.00160
+SGD: step 45000001  (75% done). fit = 0.9182, test_fit=0.9784, learning_rate=0.00145
+SGD: step 50000001  (83% done). fit = 0.9176, test_fit=0.9779, learning_rate=0.00029
+SGD: step 55000001  (91% done). fit = 0.9171, test_fit=0.9776, learning_rate=0.00006
+SGD solving started. Params: k=12, reg=0.08, reg2=0.02, lr=2.9
+SGD: There are 1059257 predictions given.
+SGD: global mean is 3.8572805008190647
+SGD: step        1  ( 0% done). fit = 4.0090, test_fit=4.0108, learning_rate=0.10150
+SGD: step  5000001  ( 8% done). fit = 1.0112, test_fit=1.0463, learning_rate=0.09280
+SGD: step 10000001  (16% done). fit = 0.9938, test_fit=1.0387, learning_rate=0.08410
+SGD: step 15000001  (25% done). fit = 0.9875, test_fit=1.0366, learning_rate=0.07830
+SGD: step 20000001  (33% done). fit = 0.9789, test_fit=1.0298, learning_rate=0.03480
+SGD: step 25000001  (41% done). fit = 0.9432, test_fit=1.0042, learning_rate=0.02900
+SGD: step 30000001  (50% done). fit = 0.9364, test_fit=0.9983, learning_rate=0.00638
+SGD: step 35000001  (58% done). fit = 0.9224, test_fit=0.9863, learning_rate=0.00580
+SGD: step 40000001  (66% done). fit = 0.9204, test_fit=0.9861, learning_rate=0.00160
+SGD: step 45000001  (75% done). fit = 0.9180, test_fit=0.9841, learning_rate=0.00145
+SGD: step 50000001  (83% done). fit = 0.9176, test_fit=0.9839, learning_rate=0.00029
+SGD: step 55000001  (91% done). fit = 0.9171, test_fit=0.9833, learning_rate=0.00006
+SGD solving started. Params: k=12, reg=0.08, reg2=0.03, lr=2.9
+SGD: There are 1059257 predictions given.
+SGD: global mean is 3.8572805008190647
+SGD: step        1  ( 0% done). fit = 4.0090, test_fit=4.0101, learning_rate=0.10150
+SGD: step  5000001  ( 8% done). fit = 1.0099, test_fit=1.0434, learning_rate=0.09280
+SGD: step 10000001  (16% done). fit = 0.9933, test_fit=1.0409, learning_rate=0.08410
+SGD: step 15000001  (25% done). fit = 0.9842, test_fit=1.0321, learning_rate=0.07830
+SGD: step 20000001  (33% done). fit = 0.9796, test_fit=1.0273, learning_rate=0.03480
+SGD: step 25000001  (41% done). fit = 0.9430, test_fit=1.0021, learning_rate=0.02900
+SGD: step 30000001  (50% done). fit = 0.9377, test_fit=0.9988, learning_rate=0.00638
+SGD: step 35000001  (58% done). fit = 0.9222, test_fit=0.9862, learning_rate=0.00580
+SGD: step 40000001  (66% done). fit = 0.9205, test_fit=0.9851, learning_rate=0.00160
+SGD: step 45000001  (75% done). fit = 0.9181, test_fit=0.9834, learning_rate=0.00145
+SGD: step 50000001  (83% done). fit = 0.9175, test_fit=0.9831, learning_rate=0.00029
+SGD: step 55000001  (91% done). fit = 0.9171, test_fit=0.9828, learning_rate=0.00006
+SGD solving started. Params: k=12, reg=0.08, reg2=0.04, lr=2.9
+SGD: There are 1059257 predictions given.
+SGD: global mean is 3.8572805008190647
+SGD: step        1  ( 0% done). fit = 4.0092, test_fit=4.0078, learning_rate=0.10150
+SGD: step  5000001  ( 8% done). fit = 1.0100, test_fit=1.0435, learning_rate=0.09280
+SGD: step 10000001  (16% done). fit = 0.9953, test_fit=1.0384, learning_rate=0.08410
+SGD: step 15000001  (25% done). fit = 0.9858, test_fit=1.0319, learning_rate=0.07830
+SGD: step 20000001  (33% done). fit = 0.9794, test_fit=1.0301, learning_rate=0.03480
+SGD: step 25000001  (41% done). fit = 0.9423, test_fit=1.0006, learning_rate=0.02900
+SGD: step 30000001  (50% done). fit = 0.9363, test_fit=0.9961, learning_rate=0.00638
+SGD: step 35000001  (58% done). fit = 0.9223, test_fit=0.9857, learning_rate=0.00580
+SGD: step 40000001  (66% done). fit = 0.9204, test_fit=0.9844, learning_rate=0.00160
+SGD: step 45000001  (75% done). fit = 0.9180, test_fit=0.9823, learning_rate=0.00145
+SGD: step 50000001  (83% done). fit = 0.9175, test_fit=0.9822, learning_rate=0.00029
+SGD: step 55000001  (91% done). fit = 0.9171, test_fit=0.9819, learning_rate=0.00006
+SGD solving started. Params: k=12, reg=0.08, reg2=0.05, lr=2.9
+SGD: There are 1059257 predictions given.
+SGD: global mean is 3.8572805008190647
+SGD: step        1  ( 0% done). fit = 4.0092, test_fit=4.0087, learning_rate=0.10150
+SGD: step  5000001  ( 8% done). fit = 1.0114, test_fit=1.0448, learning_rate=0.09280
+SGD: step 10000001  (16% done). fit = 0.9947, test_fit=1.0379, learning_rate=0.08410
+SGD: step 15000001  (25% done). fit = 0.9871, test_fit=1.0333, learning_rate=0.07830
+SGD: step 20000001  (33% done). fit = 0.9836, test_fit=1.0314, learning_rate=0.03480
+SGD: step 25000001  (41% done). fit = 0.9423, test_fit=0.9992, learning_rate=0.02900
+SGD: step 30000001  (50% done). fit = 0.9375, test_fit=0.9952, learning_rate=0.00638
+SGD: step 35000001  (58% done). fit = 0.9227, test_fit=0.9840, learning_rate=0.00580
+SGD: step 40000001  (66% done). fit = 0.9211, test_fit=0.9833, learning_rate=0.00160
+SGD: step 45000001  (75% done). fit = 0.9187, test_fit=0.9815, learning_rate=0.00145
+SGD: step 50000001  (83% done). fit = 0.9182, test_fit=0.9814, learning_rate=0.00029
+SGD: step 55000001  (91% done). fit = 0.9177, test_fit=0.9811, learning_rate=0.00006
+SGD solving started. Params: k=12, reg=0.08, reg2=0.06, lr=2.9
+SGD: There are 1059257 predictions given.
+SGD: global mean is 3.8572805008190647
+SGD: step        1  ( 0% done). fit = 4.0086, test_fit=4.0134, learning_rate=0.10150
+SGD: step  5000001  ( 8% done). fit = 1.0109, test_fit=1.0469, learning_rate=0.09280
+SGD: step 10000001  (16% done). fit = 0.9919, test_fit=1.0383, learning_rate=0.08410
+SGD: step 15000001  (25% done). fit = 0.9847, test_fit=1.0346, learning_rate=0.07830
+SGD: step 20000001  (33% done). fit = 0.9793, test_fit=1.0319, learning_rate=0.03480
+SGD: step 25000001  (41% done). fit = 0.9424, test_fit=1.0041, learning_rate=0.02900
+SGD: step 30000001  (50% done). fit = 0.9366, test_fit=1.0002, learning_rate=0.00638
+SGD: step 35000001  (58% done). fit = 0.9220, test_fit=0.9887, learning_rate=0.00580
+SGD: step 40000001  (66% done). fit = 0.9205, test_fit=0.9881, learning_rate=0.00160
+SGD: step 45000001  (75% done). fit = 0.9179, test_fit=0.9862, learning_rate=0.00145
+SGD: step 50000001  (83% done). fit = 0.9175, test_fit=0.9859, learning_rate=0.00029
+SGD: step 55000001  (91% done). fit = 0.9170, test_fit=0.9854, learning_rate=0.00006
+SGD solving started. Params: k=12, reg=0.08, reg2=0.07, lr=2.9
+SGD: There are 1059257 predictions given.
+SGD: global mean is 3.8572805008190647
+SGD: step        1  ( 0% done). fit = 4.0092, test_fit=4.0095, learning_rate=0.10150
+SGD: step  5000001  ( 8% done). fit = 1.0091, test_fit=1.0398, learning_rate=0.09280
+SGD: step 10000001  (16% done). fit = 0.9933, test_fit=1.0335, learning_rate=0.08410
+SGD: step 15000001  (25% done). fit = 0.9840, test_fit=1.0282, learning_rate=0.07830
+SGD: step 20000001  (33% done). fit = 0.9779, test_fit=1.0248, learning_rate=0.03480
+SGD: step 25000001  (41% done). fit = 0.9420, test_fit=0.9979, learning_rate=0.02900
+SGD: step 30000001  (50% done). fit = 0.9369, test_fit=0.9956, learning_rate=0.00638
+SGD: step 35000001  (58% done). fit = 0.9223, test_fit=0.9836, learning_rate=0.00580
+SGD: step 40000001  (66% done). fit = 0.9202, test_fit=0.9829, learning_rate=0.00160
+SGD: step 45000001  (75% done). fit = 0.9181, test_fit=0.9809, learning_rate=0.00145
+SGD: step 50000001  (83% done). fit = 0.9176, test_fit=0.9807, learning_rate=0.00029
+SGD: step 55000001  (91% done). fit = 0.9171, test_fit=0.9804, learning_rate=0.00006
+SGD solving started. Params: k=12, reg=0.08, reg2=0.08, lr=2.9
+SGD: There are 1059257 predictions given.
+SGD: global mean is 3.8572805008190647
+SGD: step        1  ( 0% done). fit = 4.0093, test_fit=4.0081, learning_rate=0.10150
+SGD: step  5000001  ( 8% done). fit = 1.0106, test_fit=1.0446, learning_rate=0.09280
+SGD: step 10000001  (16% done). fit = 0.9944, test_fit=1.0410, learning_rate=0.08410
+SGD: step 15000001  (25% done). fit = 0.9827, test_fit=1.0321, learning_rate=0.07830
+SGD: step 20000001  (33% done). fit = 0.9778, test_fit=1.0288, learning_rate=0.03480
+SGD: step 25000001  (41% done). fit = 0.9421, test_fit=1.0005, learning_rate=0.02900
+SGD: step 30000001  (50% done). fit = 0.9360, test_fit=0.9974, learning_rate=0.00638
+SGD: step 35000001  (58% done). fit = 0.9225, test_fit=0.9873, learning_rate=0.00580
+SGD: step 40000001  (66% done). fit = 0.9205, test_fit=0.9861, learning_rate=0.00160
+SGD: step 45000001  (75% done). fit = 0.9183, test_fit=0.9841, learning_rate=0.00145
+SGD: step 50000001  (83% done). fit = 0.9177, test_fit=0.9838, learning_rate=0.00029
+SGD: step 55000001  (91% done). fit = 0.9173, test_fit=0.9834, learning_rate=0.00006
+SGD solving started. Params: k=12, reg=0.08, reg2=0.09, lr=2.9
+SGD: There are 1059257 predictions given.
+SGD: global mean is 3.8572805008190647
+SGD: step        1  ( 0% done). fit = 4.0091, test_fit=4.0101, learning_rate=0.10150
+SGD: step  5000001  ( 8% done). fit = 1.0081, test_fit=1.0416, learning_rate=0.09280
+SGD: step 10000001  (16% done). fit = 0.9954, test_fit=1.0378, learning_rate=0.08410
+SGD: step 15000001  (25% done). fit = 0.9869, test_fit=1.0338, learning_rate=0.07830
+SGD: step 20000001  (33% done). fit = 0.9807, test_fit=1.0293, learning_rate=0.03480
+SGD: step 25000001  (41% done). fit = 0.9422, test_fit=1.0013, learning_rate=0.02900
+SGD: step 30000001  (50% done). fit = 0.9368, test_fit=0.9973, learning_rate=0.00638
+SGD: step 35000001  (58% done). fit = 0.9228, test_fit=0.9860, learning_rate=0.00580
+SGD: step 40000001  (66% done). fit = 0.9210, test_fit=0.9860, learning_rate=0.00160
+SGD: step 45000001  (75% done). fit = 0.9187, test_fit=0.9838, learning_rate=0.00145
+SGD: step 50000001  (83% done). fit = 0.9182, test_fit=0.9836, learning_rate=0.00029
+SGD: step 55000001  (91% done). fit = 0.9178, test_fit=0.9833, learning_rate=0.00006
+SGD solving started. Params: k=12, reg=0.08, reg2=0.1, lr=2.9
+SGD: There are 1059257 predictions given.
+SGD: global mean is 3.8572805008190647
+SGD: step        1  ( 0% done). fit = 4.0088, test_fit=4.0117, learning_rate=0.10150
+SGD: step  5000001  ( 8% done). fit = 1.0074, test_fit=1.0446, learning_rate=0.09280
+SGD: step 10000001  (16% done). fit = 0.9912, test_fit=1.0358, learning_rate=0.08410
+SGD: step 15000001  (25% done). fit = 0.9827, test_fit=1.0327, learning_rate=0.07830
+SGD: step 20000001  (33% done). fit = 0.9786, test_fit=1.0288, learning_rate=0.03480
+SGD: step 25000001  (41% done). fit = 0.9419, test_fit=1.0025, learning_rate=0.02900
+SGD: step 30000001  (50% done). fit = 0.9376, test_fit=0.9988, learning_rate=0.00638
+SGD: step 35000001  (58% done). fit = 0.9223, test_fit=0.9873, learning_rate=0.00580
+SGD: step 40000001  (66% done). fit = 0.9208, test_fit=0.9871, learning_rate=0.00160
+SGD: step 45000001  (75% done). fit = 0.9183, test_fit=0.9849, learning_rate=0.00145
+SGD: step 50000001  (83% done). fit = 0.9178, test_fit=0.9845, learning_rate=0.00029
+SGD: step 55000001  (91% done). fit = 0.9175, test_fit=0.9843, learning_rate=0.00006
