@@ -4,4 +4,3 @@ src/__pycache__/
 .vscode/
 *.pyc
 *.icloud
-*.csv
