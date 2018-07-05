@@ -82,7 +82,6 @@ class ALS(AlgoBase):
         return X_h
 
 
-
-als = ALS(r"C:\Users\Raja\Desktop\CIL\project\ALS.pickle", 20, 1000, 0.5, False)
+als = ALS('../data/ALS.pickle', 900, 100, 0.5, True)
 als.train()
-als.genPredictions(r"C:\Users\Raja\Desktop\CIL\project\als_predictions.csv")
+als.genPredictions('../data/ALS.csv')
