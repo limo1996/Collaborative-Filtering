@@ -141,6 +141,7 @@ sgd.generatePredictions('../data/SGD13.csv')
         - outputs results into console
         - script in plotting/plots.py can parse output and plot nice figures :)
 """
+"""
 regs = [0.07, 0.075, 0.08, 0.085]
 regs2 = [0.03, 0.035, 0.04, 0.045]
 ks = [11, 12, 13, 14, 15, 16]
@@ -154,7 +155,7 @@ for r1 in regs:
                 sgd.train()
                 sgd.generatePredictions('../data/SGD{0}_{1}_{2}_{3}.csv'.format(r1, r2, k, lr))
 
-
+"""
 #1 k=12, reg=0.083, reg2=0.04, lr=3.0 ===> 0.9269
 #2 k=12, reg=0.08, reg2=0.04, lr=3.0 ===> 0.9240
 #3 k=15, reg=0.08, reg2=0.04, lr=3.0 ===> 0.9157

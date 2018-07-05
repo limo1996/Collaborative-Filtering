@@ -31,10 +31,10 @@ def parse_lines(c, i):
     fit = float(c[i+1][idx-17:idx-11])
     return k, reg, reg2, lr, test_fit, fit
 
-def plot2():
+def plot2(file='../../data/outputs/small_grid.txt'):
     """ Plots meshgrid plot of ks and lrs with fixed reg and reg2 """
 
-    rc = read_data('../../data/outputs/small_grid.txt')
+    rc = read_data(file)
     results, ks, lrs = {}, [], []
     for i in range(0,len(rc),2):
         k, _, _, lr, test_fit, _ = parse_lines(rc, i)
@@ -58,9 +58,9 @@ def plot2():
 def sortedSet(x):
     return list(sorted(set(x)))
 
-def plot4():
+def plot4(file='../../data/outputs/big_grid.txt'):
     """ Prints meshgrid plot from grid search of 4 parameters = k, reg, reg2, lr """
-    rc = rc = read_data('../../data/outputs/big_grid.txt')
+    rc = rc = read_data(file)
     results, ks, regs, regs2, lrs = {}, [], [], [], []
     for i in range(0,len(rc),2):
         k, reg, reg2, lr, test_fit, _ = parse_lines(rc, i)
@@ -101,9 +101,9 @@ def plot4():
     #plt.savefig('meshgrid4.pdf', format='pdf')
     plt.show()
 
-def plotk():
+def plotk(file='../../data/outputs/k.txt'):
     """ Prints plot of k with all other parameters fixed """
-    rc = read_data('../../data/outputs/k.txt')
+    rc = read_data(file)
     _, reg, reg2, lr, _, _ = parse_lines(rc, 0)
     ks, trains, tests = [], [], []
     for i in range(0, len(rc), 2):
@@ -127,12 +127,12 @@ def plotk():
     plt.xlabel('k')
     plt.ylabel('RMSE')
     plt.title('Best results for different values of k.')
-    plt.savefig('plotk.pdf', format='pdf')
+    #plt.savefig('plotk.pdf', format='pdf')
     plt.show()
 
-def plot_lr():
+def plot_lr(file='../../data/outputs/lr.txt'):
     """ Prints plot of lr with all other parameters fixed """
-    rc = read_data('../../data/outputs/lr.txt')
+    rc = read_data(file)
     k, reg, reg2, _, _, _ = parse_lines(rc, 0)
     lrs, trains, tests = [], [], []
     for i in range(0, len(rc), 2):
@@ -156,7 +156,7 @@ def plot_lr():
     plt.xlabel(r'$\eta$')
     plt.ylabel('RMSE')
     plt.title('Best results for different values of learning rate.')
-    plt.savefig('plot_lr.pdf', format='pdf')
+    #plt.savefig('plot_lr.pdf', format='pdf')
     plt.show()
 
 def stats(file):
