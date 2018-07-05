@@ -50,5 +50,5 @@ cd src
 When we are in source folder we can execute the wrapper script to reproduce the results:
   * Command `python3 main.py --bestSGD` reproduces submission file called **bestSGD.csv** with the best achieved RMSE for SGD.
   * Command `python3 main.py --gridSearch` runs grid search for the best SGD configuration.
-  * Command `python3 main.py --bestBlending` creates submission file named **bestBlending** with the best achieved RMSE for Blending. Note that this script does not run SGD for all configurations but loads already produced predictions from *data/var_k* folder. 
+  * Command `python3 main.py --bestBlending` creates submission file named **bestBlending.csv** with the best achieved RMSE for Blending. Note that this script does not run SGD for all configurations but loads already produced predictions from *data/var_k* folder. 
   * Command `python3 main.py --generatePlots` displays plots that you can see in the [report](report/report.pdf)
