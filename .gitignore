@@ -4,3 +4,15 @@ src/__pycache__/
 .vscode/
 *.pyc
 *.icloud
+*.aux
+*.bbl
+*.big
+*.log
+*.fdb_latexmk
+*.fls
+*.gz
+*.blg
+*.bst
+*.cls
+*.bib
+*.tex
