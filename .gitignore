@@ -12,3 +12,7 @@ src/__pycache__/
 *.fls
 *.gz
 *.blg
+*.bst
+*.cls
+*.bib
+*.tex
