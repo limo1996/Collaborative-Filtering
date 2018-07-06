@@ -1,6 +1,9 @@
 # Collaborative Filtering 
 Semestral project of Computational Intelligence Lab at ETH Zürich
 
+## Competition and Data
+This project was used for in-class kaggle [competition](https://www.kaggle.com/c/cil-collab-filtering-2018). Data about the users and items can be found in the [repo](https://github.com/limo1996/Collaborative-Filtering/blob/master/data/data_train.csv) or on [kaggle](https://www.kaggle.com/c/cil-collab-filtering-2018/data).
+
 ## Techniques used
 We tried variety of techniques either implemented by us or with help of [Surprise](https://github.com/NicolasHug/Surprise) library. These methods are:
   * SVD
